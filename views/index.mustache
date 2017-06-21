@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+	<div class="container">
+		<form action="/" method="post">
+            <label for="todo"></label>
+            <input type="text" name="todo" value="" placeholder="add a todo">
+            <button type="submit">add this todo</button>
+    	</form>
+        {{#todos}}
+        <div class="todoListItem">
+        {{.}}  
+        </div>
+        {{/todos}}
+	</div>
+
+</body>
+</html>
