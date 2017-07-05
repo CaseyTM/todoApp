@@ -5,18 +5,39 @@
 	<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-	<div class="container">
-		<form action="/" method="post">
-            <label for="todo"></label>
-            <input type="text" name="todo" value="" placeholder="add a todo">
-            <button type="submit">add this todo</button>
-    	</form>
-        {{#todos}}
-        <div class="todoListItem">
-        {{.}}  
+        <div class="errors">
+        {{error}}
         </div>
-        {{/todos}}
+		<form class="add-todo" action="/todo" method="post">
+            <input type="text" name="todo" value="" placeholder="add a todo">
+            <button type="submit">add a new todo</button>
+        </form>
+    <div class="container">
+    <div class="unfinished">
+        <h1>    Items to DO!</h1>
+        <ul>
+            {{#todos}}
+            {{^isComplete}}
+            <li>
+                <form action="/complete" method="post"> 
+                    <input type="text" name="todoIndex" value={{index}} hidden>
+                    <button type="submit" name="finishTask">mark {{msg}} as COMPLETE!</button>
+                </form>
+            </li>
+            {{/isComplete}}
+            {{/todos}}
+        </ul>
+    </div>
+        <div class="finished">
+            <h1>Finished tasks!</h1>
+            <ul>
+            {{#todos}}
+            {{#isComplete}}
+            <li>{{msg}}</li>
+            {{/isComplete}}
+            {{/todos}}
+            </ul>
+        </div>
 	</div>
-
 </body>
 </html>

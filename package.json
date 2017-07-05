@@ -1,11 +1,27 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-validator": "^3.2.0",
+    "mustache": "^2.3.0",
+    "mustache-express": "^1.2.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaseyTM/todoApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CaseyTM/todoApp/issues"
+  },
+  "homepage": "https://github.com/CaseyTM/todoApp#readme",
+  "description": ""
 }

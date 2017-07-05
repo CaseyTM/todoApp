@@ -1,0 +1,21 @@
+.errors{
+	color: red;
+	font-size: 40px;
+	height: 100px;
+}
+.errors,.add-todo{
+	text-align: center;
+}
+.container{
+	display: flex;
+	justify-content: space-between;
+}
+.finished li{
+	background-color: green;
+}
+.unfinished button{
+	background-color: red;
+}
+li{
+	font-size: 26px;
+}

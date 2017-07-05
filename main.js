@@ -14,19 +14,37 @@ app.set('views', './views');
 app.set('view engine', 'mustache');
 
 
-const todos = [
-  "Wash the car"
-];
 
+let allInfo = {
+	error:"",
+	todos:[]
+}
 app.get("/", function (req, res) {
-  res.render('index', { todos: todos });
+  res.render('index', allInfo);
 });
 
-app.post("/", function (req, res) {
+app.post("/complete",function (req, res) {
+	let todoIndex = req.body.todoIndex
 
-  	todos.push(req.body.todo);
+	allInfo.todos[todoIndex].isComplete = true;
+	res.redirect('/')
+});
+app.post("/todo", function (req, res) {
+	allInfo.error = "";
+	req.checkBody("todo","cant be empty mang").notEmpty();
+	if(req.validationErrors()){
+		allInfo.error = req.validationErrors()[0].msg
+	}
+	if(!req.validationErrors()){
+		let todo = {
+			msg:req.body.todo,
+			index:(allInfo.todos.length),
+			isComplete:false
+		};
+	  	allInfo.todos.push(todo);
+	}
   res.redirect('/');
 });
 app.listen(3000, function(){
 	console.log("running on port 3000");
-}) 
+});    
